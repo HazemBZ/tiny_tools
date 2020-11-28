@@ -1,0 +1,5 @@
+#!/bin/bash
+JARPATH="$iosys/course/wireless_sensor_networks/tools/cupcarbon/cupcarbon.jar"
+JARFOLDER="$iosys/course/wireless_sensor_networks/tools/cupcarbon"
+[ ! -f "$JARPATH" ] && notify-send -h string:bgcolor:#ff4444 -h string:frcolor:#000000 "ERROR" "path: '$JARPATH' not a file" && exit 1
+notify-send -h string:bgcolor:#004400 -h string:frcolor:#000000 "Launch" "Launching 'cupcarbon'" && cd "$JARFOLDER" && java -jar "$JARPATH"

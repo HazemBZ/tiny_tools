@@ -1,0 +1,9 @@
+#!/bin/bash
+
+COURSES="$iosys/course"
+
+c_choice=$(ls "$COURSES"|dmenu -l 10)
+
+v_choice=$(ls "$COURSES/$c_choice/documents" | dmenu -l 10)
+
+xdg-open "$COURSES/$c_choice/documents/$v_choice"

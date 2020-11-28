@@ -1,0 +1,8 @@
+#!/sbin/bash
+bluez=`pacmd list-sinks|egrep -i name.*bluez -B 1| gawk '/index/{print $3}'`
+PCICARD="0"
+setvol="pacmd set-sink-volume"
+vol=`echo "scale=0; 65536*$1/1"|bc -l`
+#echo $bluez
+[ -n "$bluez" ] && $setvol $bluez $vol || $setvol $PCICARD $vol #echo bluez has value of $bluez || echo blueze w/o value
+
