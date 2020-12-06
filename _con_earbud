@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo rfkill unblock bluetooth
+bluetoothctl paired-devices | gawk '{print $2}' | xargs bluetoothctl connect

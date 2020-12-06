@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bluetoothctl paired-devices|gawk '{print $2}'|xargs bluetoothctl connect
