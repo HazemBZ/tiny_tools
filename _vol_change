@@ -1,0 +1,1 @@
+pacmd list-sinks|grep base|gawk '{print $5}'|tr '%' ' ' # base volume percent
