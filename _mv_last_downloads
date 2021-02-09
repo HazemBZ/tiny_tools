@@ -1,0 +1,26 @@
+#!/bin/bash
+
+ORIG=`pwd`
+DOWN=`echo $HOME/Downloads`
+
+#echo "pwd => $ORIG"
+#echo "down => $DOWN"
+COUNT="$1"
+
+## test input
+case "$COUNT" in
+	''|*[!0-9]*) echo "'$COUNT' invalid input"
+esac
+
+if (( $COUNT > 0 )); then
+	cd $DOWN
+	perl-rename 's/ /_/g' $DOWN/*
+	FILES=`ls -t |head -n$COUNT`
+	echo "moved $FILES"
+#	echo " PWD::$ORIG"
+	mv $FILES $ORIG/
+
+else
+	echo 'no'
+
+fi

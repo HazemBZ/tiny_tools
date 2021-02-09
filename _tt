@@ -1,6 +1,8 @@
 #!/bin/bash
 
 path="$iosys/time" 
-[  -z $1 ] && zathura "$path/"$(ls -tr $path --format=single-column|tail -n 1) ||
-	zathura "$path/"$(ls -tr $path --format=single-column|tail -n $1 | head -n 1)
+[  -z $1 ] && FILE=$(ls -tr $path --format=single-column|tail -n 1) ||
+	FILE=$(ls -tr $path --format=single-column|tail -n $1 | head -n 1)
 
+echo "$path/$FILE"
+zathura "$path/$FILE"
