@@ -5,4 +5,8 @@ path="$iosys/time"
 	FILE=$(ls -tr $path --format=single-column|tail -n $1 | head -n 1)
 
 echo "$path/$FILE"
+TYPE=$(file "$path/$FILE" | gawk '{print $3}')
+echo "File Type $TYPE"
+
+[[ $TYPE = "Excel" ]] && libreoffice "$path/$FILE" ||
 zathura "$path/$FILE"
