@@ -1,17 +1,34 @@
+#!/bin/env python3 
+
 # use this later: https://pypi.org/project/tqdm/
 # bs: https://beautiful-soup-4.readthedocs.io/en/latest/#searching-the-tree
 # requests: https://docs.python-requests.org/en/master/user/quickstart/#cookies
 
-import requests, os
+import requests, os, sys
 from bs4 import BeautifulSoup as BS
 from tqdm import tqdm 
 
-url = 'https://moodle.esprit-tn.com/course/view.php?id=297'
+
+url = ''
 
 browser_cookie_string = os.environ.get('MOODLE_SESSION_COOKIE', None)
+
+
+if sys.argv[1]:
+  url = sys.argv[1]
+else:
+  print('no url specified')
+  sys.exit()
+
+
+
+
+if len(sys.argv) == 3:
+  browser_cookie_string =  sys.argv[2]
+
 if not browser_cookie_string:
   print('no moodle cookie on "MOODLE_SESSION_COOKIE" Env variable')
-  os.sys.exit(0)
+  sys.exit(0)
 
 formated_cookies = dict(map(lambda s: s.split('='), browser_cookie_string.split('; ')))
 print(f"formatted cookie {formated_cookies}")
