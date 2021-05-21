@@ -8,5 +8,7 @@ echo "$path/$FILE"
 TYPE=$(file "$path/$FILE" | gawk '{print $3}')
 echo "File Type $TYPE"
 
-[[ $TYPE = "Excel" ]] && libreoffice "$path/$FILE" ||
+
+[[ $TYPE = "image" ]] && eog "$path/$FILE" || ( 
+[[ $TYPE = "Excel" ]] && libreoffice "$path/$FILE" )||
 zathura "$path/$FILE"
