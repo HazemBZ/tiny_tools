@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+NUMBER="$1"
+
+_nm_connections_list| gawk '($2 != "UUID")'|head -n $NUMBER |tail -n1

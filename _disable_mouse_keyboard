@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+id=$(xinput --list --short|grep -i "mouse  keyboard" -m 1|awk '{print $7}'|tr "id=" " ")
+prop=$(xinput --list-props 13|grep -i "device enabled"|awk '{print $3}'|tr "():" " ")
+
+xinput --set-prop $id $prop 0
+

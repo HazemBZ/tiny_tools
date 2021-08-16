@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+VOLSTEP=10
+
+
+if [ "$1" = "up" ]; then
+  vol=$(( $(amixer sget 'Master'|grep -m 1 %|awk '{print $5}'|sed 's/\[//; s/\]//; s/%//') + $VOLSTEP ))
+elif [ "$1" = "down" ]; then
+  vol=$(( $(amixer sget 'Master'|grep -m 1 %|awk '{print $5}'|sed 's/\[//; s/\]//; s/%//') - $VOLSTEP ))
+else 
+  echo "volume change options '$1' UNKNOWN"
+fi
+# $(( $(amixer sget 'Master'|grep -m 1 %|awk '{print $5}'|sed 's/\[//; s/\]//; s/%//') + 1 ))
+
+#echo $vol
+amixer sset 'Master' $vol% &>/dev/null

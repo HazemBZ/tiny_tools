@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+SSID="$1"
+PASS="$2"
+
+nmcli device wifi connect "$SSID" password "$PASS"
