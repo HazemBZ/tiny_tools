@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path="$iosys/time" 
+[ ! -v path ] &&  path="$ZATH_PREF/time" || echo "set to $path"
 [  -z $1 ] && FILE=$(ls -tr $path --format=single-column|tail -n 1) ||
 	FILE=$(ls -tr $path --format=single-column|tail -n $1 | head -n 1)
 
@@ -11,4 +11,5 @@ echo "File Type $TYPE"
 
 [[ $TYPE = "image" ]] && eog "$path/$FILE" || ( 
 [[ $TYPE = "Excel" ]] && libreoffice "$path/$FILE" )||
-zathura "$path/$FILE"
+#zathura "$path/$FILE"
+xdg-open "$path/$FILE"

@@ -18,7 +18,7 @@ if (( $COUNT > 0 )); then
 	FILES=`ls -t |head -n$COUNT`
 	echo "moved $FILES"
 #	echo " PWD::$ORIG"
-	mv $FILES $ORIG/
+	mv $FILES "$ORIG"/
 
 else
 	echo 'no'

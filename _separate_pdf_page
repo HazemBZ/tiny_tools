@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+PAGE="$1"
+IN="$2"
+OUT="$3"
+
+
+pdfseparate -f $1 -l $1 $IN $OUT

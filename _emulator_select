@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+#emulator -list-avds| rofi -dmenu -font 'Noto Sans 20'| $(! xargs -I{} test -z {}) &&  xargs echo && xargs emulator -avd 
+
+emulator -list-avds| rofi -dmenu -font 'Noto Sans 20'| xargs -I%  sh -c '(! test -z %) &&  echo "|| Running \"%\" Device ||" && emulator -avd %'
